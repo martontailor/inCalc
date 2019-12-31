@@ -15,21 +15,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class TestController {
+public class SummaryController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TestController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SummaryController.class);
 
     private SummaryService summaryService;
 
     @Autowired
-    public TestController(SummaryService summaryService) {
+    public SummaryController(SummaryService summaryService) {
         this.summaryService = summaryService;
-    }
-
-    @GetMapping("/security")
-    public String security(@AuthenticationPrincipal UserDetails userDetails) {
-        LOGGER.info(userDetails.toString());
-        return "Authenticated";
     }
 
     @PostMapping("/income")
