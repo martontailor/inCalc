@@ -1,7 +1,7 @@
-package com.martontailor.inCalc.api;
+package com.martontailor.incalc.api;
 
-import com.martontailor.inCalc.domain.Income;
-import com.martontailor.inCalc.repo.IncomeRepository;
+import com.martontailor.incalc.domain.Income;
+import com.martontailor.incalc.repo.IncomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +18,7 @@ public class TestController {
         this.incomeRepository = incomeRepository;
     }
 
-    @GetMapping
+    @GetMapping("/db")
     public String helloWorld() {
         Income income = new Income();
         income.setAmount(100.0);
@@ -26,4 +26,11 @@ public class TestController {
         incomeRepository.save(income);
         return incomeRepository.findAll().toString();
     }
+
+    @GetMapping("/security")
+    public String security(){
+        return "Authenticated";
+    }
+
+
 }

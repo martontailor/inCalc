@@ -1,6 +1,6 @@
-package com.martontailor.inCalc.repo;
+package com.martontailor.incalc.repo;
 
-import com.martontailor.inCalc.domain.Income;
+import com.martontailor.incalc.domain.Income;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
