@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    driverClassName: MongoDB
+  data:
+    mongodb:
+      uri: mongodb://mongodb/incalc
+      database: incalc
+      host: mongodb
+      port: 27017
