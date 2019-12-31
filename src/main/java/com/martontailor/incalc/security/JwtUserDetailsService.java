@@ -1,5 +1,9 @@
 package com.martontailor.incalc.security;
 
+import com.martontailor.incalc.domain.Income;
+import com.martontailor.incalc.domain.Outcome;
+import com.martontailor.incalc.domain.Summary;
+import com.martontailor.incalc.repo.SummaryRepository;
 import com.martontailor.incalc.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,7 +12,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
@@ -17,6 +23,8 @@ public class JwtUserDetailsService implements UserDetailsService {
     private PasswordEncoder bcryptEncoder;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private SummaryRepository summaryRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -33,7 +41,20 @@ public class JwtUserDetailsService implements UserDetailsService {
                 .username(user.getUsername())
                 .password(bcryptEncoder.encode(user.getPassword()))
                 .email(user.getEmail())
+                .summary(getNewSummary())
                 .build();
         return userRepository.save(newUser);
+    }
+
+    private Summary getNewSummary() {
+        Summary summary = Summary.builder()
+                .balance(0.0)
+                .incomes(List.of())
+                .outcomes(List.of())
+                .build();
+
+        summaryRepository.save(summary);
+
+        return summary;
     }
 }

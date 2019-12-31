@@ -2,22 +2,23 @@ package com.martontailor.incalc.domain;
 
 import lombok.Builder;
 import lombok.Data;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Data
 @Builder
-@Document(collection = "USERS")
-public class User {
+@Document(collection = "SUMMARIES")
+public class Summary {
 
     @Id
-    public ObjectId id;
-    private String username;
-    private String email;
-    private String password;
+    private String id;
+    private Double balance;
     @DBRef
-    private Summary summary;
+    private List<Income> incomes;
+    @DBRef
+    private List<Outcome> outcomes;
 
 }
