@@ -1,4 +1,4 @@
-package com.martontailor.inCalc;
+package com.martontailor.incalc;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

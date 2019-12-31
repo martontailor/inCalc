@@ -7,3 +7,6 @@ spring:
       database: incalc
       host: mongodb
       port: 27017
+jwt:
+  secret:
+    incalcsecretkey

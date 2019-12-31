@@ -1,7 +1,6 @@
-package com.martontailor.inCalc.domain;
+package com.martontailor.incalc.domain;
 
 import lombok.Data;
-import org.springframework.dao.DataAccessException;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
